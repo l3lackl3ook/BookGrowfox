@@ -26,3 +26,8 @@ urlpatterns = [
     path('group/<int:group_id>/', views.group_detail, name='group_detail'),
     path('page/<int:page_id>/', views.pageview, name='pageview'),
 ]
+
+# ✅ เพิ่มตรงนี้เพื่อให้ static files โหลดได้ตอน DEBUG = True
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
